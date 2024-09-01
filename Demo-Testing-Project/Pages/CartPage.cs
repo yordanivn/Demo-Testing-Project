@@ -8,10 +8,12 @@ namespace Demo_Testing_Project.Pages
         public CartPage(IWebDriver driver):base(driver)
 		{
 		}
-		private readonly By cartItem = By.ClassName("cart_item");
+		private readonly By cartItem = By.CssSelector(".cart_item");
 		private readonly By checkoutButton = By.Id("checkout");
 		private readonly By removeButton = By.Id("remove-sauce-labs-backpack");
 		private readonly By continueShoppingButton = By.Id("continue-shopping");
+
+
 
 		public bool IsCartItemDisplayed()
 		{
