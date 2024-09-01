@@ -23,10 +23,23 @@ namespace Demo_Testing_Project.Pages
         {
             Type(passwordField, password);
         }
-
+        public void ClickLoginButton()
+        {
+            Click(loginButton);
+        }
+        public string GetErrorMessage()
+        {
+            return GetText(errorMsg);
+        }
         public bool IsLoginPageOpen()
         {
             return driver.Url.Contains("https://www.saucedemo.com/");
+        }
+        public void LoginUser(string username, string password)
+        {
+            InputUsername(username);
+            InputPassword(password);
+            ClickLoginButton();
         }
     }
 }
