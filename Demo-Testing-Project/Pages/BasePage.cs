@@ -38,7 +38,9 @@ namespace Demo_Testing_Project.Pages
         {
             return FindElement(by).Text;
         }
-
+        protected readonly By twitterButtonLink = By.XPath("//a[@data-test='social-twitter']");
+        protected readonly By facebookButtonLink = By.XPath("//a[@data-test='social-facebook']");
+        protected readonly By linkedInButtonLink = By.XPath("//a[@data-test='social-linkedin']");
     }
 }
 
