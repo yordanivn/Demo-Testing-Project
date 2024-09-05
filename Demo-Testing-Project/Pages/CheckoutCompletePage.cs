@@ -19,6 +19,10 @@ namespace Demo_Testing_Project.Pages
 		{
 			return GetText(completeHeader) == "Thank you for your order!";
         }
+		public void ClickBackToHome()
+		{
+			Click(backHomeButton);
+		}
 	}
 }
 

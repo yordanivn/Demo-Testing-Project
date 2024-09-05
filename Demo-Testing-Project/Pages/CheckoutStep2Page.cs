@@ -15,6 +15,11 @@ namespace Demo_Testing_Project.Pages
         {
             return driver.Url.Contains("checkout-step-two.html");
         }
+
+        public void ClickFinish()
+        {
+            Click(finishButton);
+        }
     }
 }
 

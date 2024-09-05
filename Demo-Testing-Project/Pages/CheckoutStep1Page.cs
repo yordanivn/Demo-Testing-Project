@@ -21,13 +21,15 @@ namespace Demo_Testing_Project.Pages
             Type(firstNameField, firstName);
             Type(lastNameField, lastName);
             Type(zipCodeField, zipCode);
+            Click(continueButton);
         }
 
-		public void ClickContinue()
-		{
-			Click(continueButton);
-		}
-		public void ClickCancel()
+        public void ClickContinue()
+        {
+            Click(continueButton);
+        }
+
+        public void ClickCancel()
 		{
 			Click(cancelButton);
 		}
@@ -35,6 +37,11 @@ namespace Demo_Testing_Project.Pages
 		{
 			return driver.Url.Contains("checkout-step-one.html");
 		}
+
+        public string GetErrorMsg()
+        {
+            return GetText(ErrorMsg);
+        }
 
     }
 }
