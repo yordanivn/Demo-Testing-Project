@@ -27,12 +27,15 @@ jobs:
         sudo apt-get install -y google-chrome-stable
 
     - name: Install dependencies
+      working-directory: /Users/yordan.i/Personal/Softuni/Demo-Testing-Project/Demo-Testing-Project
       run: dotnet restore
 
     - name: Build
+      working-directory: /Users/yordan.i/Personal/Softuni/Demo-Testing-Project/Demo-Testing-Project
       run: dotnet build --no-restore
 
     - name: Run tests
+      working-directory: /Users/yordan.i/Personal/Softuni/Demo-Testing-Project/Demo-Testing-Project
       env:
         CHROMEWEBDRIVER: /usr/bin/google-chrome
       run: dotnet test --verbosity normal
