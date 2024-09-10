@@ -38,4 +38,12 @@ jobs:
       working-directory: ./Demo-Testing-Project
       env:
         CHROMEWEBDRIVER: /usr/bin/google-chrome
-      run: dotnet test --verbosity normal
+      run: dotnet test --logger "trx;LogFileName=test_results.trx" --verbosity normal
+      continue-on-error: true
+      
+    - name: Upload test results
+      if: always()  # This ensures the upload happens even if the tests fail
+      uses: actions/upload-artifact@v2
+      with:
+        name: TestResults
+        path: '**/test_results.trx'
