@@ -41,6 +41,14 @@ namespace Demo_Testing_Project.Tests
             inventoryPage.AddToCardByIndex(1);
             Assert.That(inventoryPage.GetNumberOfAddedItems(), Is.EqualTo("1"));
         }
+
+        [Test, Order(6)]
+        public void TestCartRemoveButtonRemoveItem()
+        {
+            inventoryPage.AddToCardByIndex(1);
+            inventoryPage.ClickRemoveButton();
+            Assert.That(inventoryPage.GetNumberOfAddedItems(), Is.EqualTo("0"));
+        }
     }
 
     [TestFixture]
@@ -90,7 +98,15 @@ namespace Demo_Testing_Project.Tests
             inventoryPage.ClickRemoveButton();
             Assert.That(inventoryPage.IsAddToCartButtonDisplayed(), Is.False, "The add button was not displayed after clicking remove button");
         }
+        [Test, Order(7)]
+        public void TestCartRemoveButtonRemoveItem()
+        {
+            inventoryPage.AddToCardByIndex(1);
+            inventoryPage.ClickRemoveButton();
+            Assert.That(inventoryPage.GetNumberOfAddedItems(), Is.EqualTo("0"),"After removing an item the result should be 0");
+        }
     }
+
     [TestFixture]
     public class InventoryTestsWithPerformanceGlitchUser : BaseTest
     {
@@ -130,6 +146,62 @@ namespace Demo_Testing_Project.Tests
         {
             inventoryPage.AddToCardByIndex(1);
             Assert.That(inventoryPage.GetNumberOfAddedItems(), Is.EqualTo("1"));
+        }
+        [Test, Order(7)]
+        public void TestCartRemoveButtonRemoveItem()
+        {
+            inventoryPage.AddToCardByIndex(1);
+            inventoryPage.ClickRemoveButton();
+            Assert.That(inventoryPage.GetNumberOfAddedItems(), Is.EqualTo("0"), "After removing an item the result should be 0");
+        }
+    }
+
+    [TestFixture]
+    public class InventoryTestsWithErrorUser : BaseTest
+    {
+        [SetUp]
+        public void SetUp()
+        {
+            Login("error_user", "secret_sauce");
+        }
+
+        [Test, Order(1)]
+        public void TestInventoryDisplay()
+        {
+            Assert.That(inventoryPage.IsInventoryDisplayed(), Is.True, "The inventory page has no items displayed");
+        }
+
+        [Test, Order(2)]
+        public void TestAddTocartButtonIsVisibleBeforeClicking()
+        {
+            Assert.That(inventoryPage.IsAddToCartButtonDisplayed(), Is.True, "Add to cart button is not displayed");
+        }
+        [Test, Order(3)]
+        public void TestAddToCartByIndex()
+        {
+            inventoryPage.AddToCardByIndex(1);
+            inventoryPage.ClickCartLink();
+            Assert.That(cartPage.IsCartItemDisplayed(), Is.True, "Cart item was not added to the cart");
+        }
+        [Test, Order(4)]
+        public void TestsAddToCartButtonChangesToRemoveAfterClick()
+        {
+            inventoryPage.AddToCardByIndex(1);
+            Assert.That(inventoryPage.IsRemoveButtonDisplayed(), Is.True, "The remove button was not displayed after clicking add to cart button");
+        }
+
+        [Test, Order(5)]
+        public void TestCartCountDisplayCorrectNumberOfAddedItmes()
+        {
+            inventoryPage.AddToCardByIndex(1);
+            Assert.That(inventoryPage.GetNumberOfAddedItems(), Is.EqualTo("1"));
+        }
+        [Test, Order(6)]
+        public void TestCartRemoveButtonRemoveItem()
+        {
+            inventoryPage.AddToCardByIndex(1);
+            inventoryPage.ClickRemoveButton();
+            Assert.That(inventoryPage.GetNumberOfAddedItems(), Is.EqualTo("0"), "After removing an item the result should be 0");
         }
     }
 }
