@@ -43,7 +43,7 @@ jobs:
       
     - name: Upload test results
       if: always()  # This ensures the upload happens even if the tests fail
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3  # Updated to the latest version
       with:
         name: TestResults
         path: '**/test_results.trx'
