@@ -26,6 +26,11 @@ namespace Demo_Testing_Project.Pages
 		{
 			Click(cartLink);
 		}
+        public void ClickRemoveButton()
+        {
+            Click(removeFromCartButton);
+        }
+       
 		public bool IsInventoryDisplayed()
 		{
 			return FindElements(inventoryItems).Any();
