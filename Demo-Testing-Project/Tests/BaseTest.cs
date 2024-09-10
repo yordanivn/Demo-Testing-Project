@@ -2,6 +2,7 @@
 using Demo_Testing_Project.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 
 namespace Demo_Testing_Project.Tests
 {
@@ -22,7 +23,11 @@ namespace Demo_Testing_Project.Tests
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddUserProfilePreference("profile.password_manager_enabled", false);
             chromeOptions.AddArgument("--disable-search-engine-choice-screen");
-            
+            chromeOptions.AddArgument("--headless");  // Enable headless mode
+            chromeOptions.AddArgument("--no-sandbox");  // Required for running in CI environments
+            chromeOptions.AddArgument("--disable-dev-shm-usage");  // Prevents out of memory issues
+            chromeOptions.AddArgument("--disable-gpu");  // Disable GPU for headless mode
+            chromeOptions.AddArgument("--window-size=1920x1080");  // Set a window size to ensure correct layout
 
             driver = new ChromeDriver(chromeOptions);
 
