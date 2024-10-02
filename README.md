@@ -13,3 +13,11 @@ After succsessful login you can add or remove items from shopping cart. Once add
 ## Features
 - Limited functionalities which depends on the logged in user.
 - Easy to navigate
+
+## Technologies Used
+
+- **Programming Languages**: C#
+- **Frameworks**: .NET
+- **Version Control**: GitHub
+- **Testing**: Selenium
+- **CI/CD**: GitHub Actions
